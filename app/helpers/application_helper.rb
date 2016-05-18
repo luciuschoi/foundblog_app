@@ -44,6 +44,15 @@ module ApplicationHelper
     content_tag(:span, class:'badge') do
       content_tag( :i, '', class: "fi-#{shape}")
     end
-  end  
+  end
+
+  def icon_tags(tags_array)
+    label_tags = ""
+    tags_array = tags_array.split(',') if tags_array.is_a? String
+    tags_array.each do |tag|
+      label_tags += "<a href='/posts?tag=#{CGI::escape(tag)}'><span class='label'>#{tag}</span></a> "
+    end
+    icon('pricetag-multiple') + ' ' + label_tags.html_safe unless tags_array.blank?
+  end
 
 end

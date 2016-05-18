@@ -31,12 +31,17 @@
               <%= link_to 'Uncategoried', posts_path(category_id: 0) %>
               <small><%= Post.uncategorized_posts.size %></small>
             </li>
-          <% Category.all.each do | category | %>
-            <li>
-              <%= link_to category.name, category_posts_path(category) %>
-              <small><%= category.posts.published_posts.size %></small>
-            </li>
-          <% end %>          
+            <% Category.all.each do | category | %>
+              <li>
+                <%= link_to category.name, category_posts_path(category) %>
+                <small><%= category.posts.published_posts.size %></small>
+              </li>
+            <% end %>
+          </ul>
+          <p>Tag Cloud :</p>
+          <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+            <%= link_to tag.name, posts_path(tag: tag.name), :class => css_class %>
+          <% end %>
           <hr>
           <center>
             <% if user_signed_in? %>

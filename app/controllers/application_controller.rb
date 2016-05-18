@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  before_action :tag_cloud
+
   layout :dynamic_layout
 
   def authority_forbidden(error)
@@ -13,6 +15,10 @@ class ApplicationController < ActionController::Base
   private
   def dynamic_layout
     devise_controller? ? 'devise_layout' : 'general_layout'
+  end
+
+  def tag_cloud
+    @tags = Post.tag_counts_on(:tags)
   end
 
 end

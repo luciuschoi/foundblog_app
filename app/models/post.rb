@@ -3,6 +3,8 @@ class Post < ActiveRecord::Base
   resourcify
   include Authority::Abilities
 
+  acts_as_taggable
+
   belongs_to :category
   belongs_to :user
 
@@ -10,5 +12,9 @@ class Post < ActiveRecord::Base
   scope :myposts, -> (user) { where( user_id: user.id ).order( created_at: :desc) }
   scope :recent, -> { published_posts.limit(10) }
   scope :uncategorized_posts, -> { published_posts.where(category_id: nil) }
+
+  def tag_list
+    self.tags.map(&:name).join(', ')
+  end
 
 end
