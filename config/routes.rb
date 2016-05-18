@@ -4,9 +4,13 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :categories
+  resources :categories do
+    resources :posts
+  end
+
   resources :posts do
     get 'list_my', on: :collection
     resources :comments
   end
+
 end
