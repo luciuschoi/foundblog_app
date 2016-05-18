@@ -1,6 +1,17 @@
 source 'https://rubygems.org'
 
 
+# Added for this project
+gem 'jquery-turbolinks'
+gem 'foundation-rails'
+gem 'foundation-icons-sass-rails'
+gem 'simple_form'
+gem 'devise'
+gem 'rolify'
+gem 'authority'
+gem "letter_opener", :group => :development
+
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 # Use mysql as the database for Active Record
@@ -44,4 +55,3 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-
