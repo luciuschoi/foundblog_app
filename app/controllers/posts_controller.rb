@@ -85,6 +85,10 @@ class PostsController < ApplicationController
     end
   end
 
+  def archive
+    @posts = Post.published_posts
+  end  
+
   private
 
     def set_category
