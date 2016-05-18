@@ -2,6 +2,12 @@ class Post < ActiveRecord::Base
 
   resourcify
   include Authority::Abilities
+  
+  include SearchCop
+  search_scope :search do
+    attributes :title, :content
+    attributes :comment => "comments.body"
+  end
 
   acts_as_taggable
 
