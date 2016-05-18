@@ -23,7 +23,7 @@
   </div>
   <div class='tags'>
     <%= icon_tags(post.tag_list) %>
-  </div>  
+  </div>
   <% if action_name == 'index' %>
   <div class='actions' style='text-align:right;'>
     <%= link_to 'read more...', post, class: 'button tiny' %>
@@ -34,3 +34,9 @@
   </div>
   <% end %>
 </div>
+
+<% if post.comments.count > 0 %>
+  <div class='comments'>
+    <%= icon('comment') %> <%= post.comments.count %>
+  </div>
+<% end %>

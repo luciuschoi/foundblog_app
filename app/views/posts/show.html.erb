@@ -9,16 +9,22 @@
     <%= simple_format @post.content %>
   </div>
   <div class='category'>
-     <%= icon('folder') + ' ' + post_category(@post) %>
+     <%= icon('folder') + ' ' + @post.category.name %>
   </div>
   <div class='tags'>
      <%= icon_tags(@post.tag_list) %>
   </div>
-  <div class='published'>
-    <%= published_icon @post.published %>
-  </div>
+  <% if user_signed_in? && current_user.can_update?(@post) %>
+    <div class='published'>
+      <%= published_icon @post.published %>
+    </div>
+  <% end %>
 </div>
 <hr>
 
-<%= link_to 'Edit', edit_post_path(@post), class: 'button small' %>
-<%= link_to 'Back', posts_path, class: 'button small' %>
+<div style='text-align:right;'>
+  <%= link_to 'Edit', edit_post_path(@post), class: 'button tiny' %>
+  <%= link_to 'Back', posts_path, class: 'button tiny' %>
+</div>
+
+<%= render partial: 'comments/comments', locals: { post: @post } %>
