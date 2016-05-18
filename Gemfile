@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby '2.3.0'
 
 # Added for this project
 gem 'jquery-turbolinks'
@@ -12,6 +13,9 @@ gem 'authority'
 gem "letter_opener", :group => :development
 gem 'acts-as-taggable-on'
 gem 'search_cop'
+gem 'mailgun_rails'
+gem 'pg', group: :production
+gem 'rails_12factor', group: :production
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'

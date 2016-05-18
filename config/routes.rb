@@ -1,3 +1,5 @@
+Rails.application.routes.default_url_options[:host] = 'foundblog6.herokuapp.com'
+
 Rails.application.routes.draw do
 
   root 'posts#index'
